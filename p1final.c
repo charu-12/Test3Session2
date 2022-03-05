@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 void input(int*num1,int*den1,int*num2,int*den2)
 {
   printf("Enter the numerator of 1st fraction:");
