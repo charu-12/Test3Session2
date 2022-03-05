@@ -1,43 +1,35 @@
-#include <stdio.h>
-#include <math.h>
-void input(int*num1,int*den1,int*num2,int*den2)
+#include<stdio.h>
+void input(int *n,int *r)
 {
-  printf("Enter the numerator of 1st fraction:");
-  scanf("%d",num1);
-  printf("Enter the denominator of 1st fraction");
-  scanf("%d",den1);
-  printf("Enter the numerator of 1st fraction");
-  scanf("%d",num2);
-  printf("Enter the denominator of 2nd fraction");
-  scanf("%d",den2);
+  printf("N=\n");
+  scanf("%d",n);
+  printf("R=\n");
+  scanf("%d",r);
 }
-int find_gcd(int a, int b)
+int factorial(int a)
 {
-  int t;
-  while (b != 0) {
-        t = b;
-        b = a % b;
-        a = t;
+  int fact=1;
+  for(int i=1;i<=a;i++)
+    {
+      fact=fact*i;
     }
-  return a;
+  return fact;
 }
-void add(int num1,int den1,int num2,int den2,int*num3,int*den3)
+int ncr(int n,int r)
 {
-  *num3 =num1 * den2 + num2 * den1;
-  *den3= den1*den2;
-  int g= find_gcd(*num3 , *den3);
-  *num3 /= g;
-  *den3 /= g;
+  int result;
+  result=factorial(n)/(factorial(n-r)*factorial(r));
+  return result;
 }
-void output(int num1,int den1,int num2,int den2,int num3,int den3)
+void output(int n,int r,int result)
 {
-  printf("So the sum of %d/%d+%d/%d=%d/%d",num1,den1,num2,den2,num3,den3);
+  printf("%d C %d= %d",n,r,result);
 }
 int main()
 {
-  int num1,den1,num2,den2,num3,den3;
-  input(&num1,&den1,&num2,&den2);
-  add(num1,den1,num2,den2,&num3,&den3);
-  output(num1,den1,num2,den2,num3,den3);
+  int n,r,result;
+  input(&n,&r);
+  result=ncr(n,r);
+  output(n,r,result);
   return 0;
 }
